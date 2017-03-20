@@ -38,6 +38,11 @@ exports.up = (knex, Promise) =>
       table.timestamp('created_at')
     }),
 
+    knex.schema.createTable('audit_log', table => {
+      table.string('event').notNullable()
+      table.json('payload').notNullable()
+    })
+
   ])
 
 
