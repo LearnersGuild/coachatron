@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === 'production') {
 
 server.use(cookieParser())
 
-
 require('./authentication')(server)
 
 server.get('/', (req, res) => {
