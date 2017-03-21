@@ -3,7 +3,7 @@ exports.up = (knex, Promise) =>
 
     knex.schema.createTable('players', table => {
       table.string('handle').notNullable()
-      table.boolean('choach').notNullable()
+      table.boolean('coach').notNullable()
       table.boolean('on_duty').notNullable()
     }),
 
@@ -22,7 +22,8 @@ exports.up = (knex, Promise) =>
     }),
 
     knex.schema.createTable('project_coaches', table => {
-      table.string('url').notNullable()
+      table.integer('player_id').notNullable()
+      table.integer('project_id').notNullable()
     }),
 
     knex.schema.createTable('requests', table => {

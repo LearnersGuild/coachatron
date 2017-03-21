@@ -1,0 +1,125 @@
+{
+  "players": [
+    {
+      "id": 5001,
+      "handle": "jrob8577",
+      "is_coach": true
+    },
+    {
+      "id": 5002,
+      "handle": "deadlyicon",
+      "is_coach": true
+    },
+    {
+      "id": 5003,
+      "handle": "nicosesma",
+      "is_coach": true
+    },
+    {
+      "id": 5004,
+      "handle": "ameliavoncat",
+      "is_coach": true
+    },
+    {
+      "id": 5005,
+      "handle": "asantos3026",
+      "is_coach": false
+    },
+    {
+      "id": 5006,
+      "handle": "mantinone",
+      "is_coach": false
+    },
+    {
+      "id": 5007,
+      "handle": "moniarchy",
+      "is_coach": false
+    },
+    {
+      "id": 5008,
+      "handle": "erikasf",
+      "is_coach": false
+    }
+  ],
+
+  "teams": [
+    {
+      "id": 6001,
+      "project_id": 7001,
+      "name": "heftygorilla"
+    },
+    {
+      "id": 6002,
+      "project_id": 7002,
+      "name": "heftygorilla"
+    }
+  ],
+
+  "team_players": [
+    {
+      "team_id": 6001,
+      "player_id": 5005
+    },
+    {
+      "team_id": 6001,
+      "player_id": 5006
+    },
+    {
+      "team_id": 6002,
+      "player_id": 5007
+    },
+    {
+      "team_id": 6002,
+      "player_id": 5008
+    }
+  ],
+
+  "projects": [
+    {
+      "id": 7001,
+      "url": "http://example.com/projects/7001"
+    },
+    {
+      "id": 7002,
+      "url": "http://example.com/projects/7002"
+    }
+  ],
+
+  "project_coaches": [
+    {
+      "project_id": 7001,
+      "player_id": 5003
+    },
+    {
+      "project_id": 7002,
+      "player_id": 5004
+    }
+  ],
+
+
+  "requests": [
+    {
+      "team_id": 6000,
+      "created_at": "2017-03-20 13:52:46.332296-07",
+      "resolved_at": "2017-03-20 13:53:46.332296-07"
+    },
+    {
+      "team_id": 6001,
+      "created_at": "2017-03-20 13:59:46.332296-07",
+      "resolved_at": null
+    },
+    {
+      "team_id": 6002,
+      "created_at": "2017-03-20 13:59:46.332296-07",
+      "resolved_at": null
+    }
+  ],
+
+
+  "request_events": [
+    {
+
+    }
+  ]
+
+}
