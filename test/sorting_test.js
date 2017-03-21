@@ -15,12 +15,10 @@ const extractMyProjects = (state, currentUser) =>
   state.project_coaches
     .filter(projectCoach => projectCoach.player_id === currentUser.id)
 
-const extractMyTeams = (state, currentUser) =>
-  state.team_players
-    .filter(teamPlayer => teamPlayer.player_id === currentUser.id)
-    .map(teamPlayer =>
-      state.teams.find(team => team.id === teamPlayer.team_id)
-    )
+const extractMyTeams = (state, currentUser) => {
+  const projectIds = extractMyProjects(state, currentUser).map(p => p.project_id)
+  return state.teams.filter(team => projectIds.includes(team.project_id))
+}
 
 const deriveQueue = (state, currentUserHandle, now) => {
   const mow = moment(now)
@@ -82,6 +80,23 @@ describe.only('sorting', function(){
           "project_id": 7001,
           "player_id": 5003
         }
+      ])
+    })
+  })
+
+  describe('extractMyProjects', function(){
+    it('should work', function(){
+      const jrob8577 = findPlayerByHandle(state1, 'jrob8577')
+      const nicosesma = findPlayerByHandle(state1, 'nicosesma')
+      expect(jrob8577).to.be.an('object')
+      expect(nicosesma).to.be.an('object')
+      expect(extractMyTeams(state1, jrob8577)).to.deep.equal([])
+      expect(extractMyTeams(state1, nicosesma)).to.deep.equal([
+        {
+          "id": 6001,
+          "project_id": 7001,
+          "name": "heftygorilla"
+        },
       ])
     })
   })
