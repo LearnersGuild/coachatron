@@ -27,14 +27,12 @@ const deriveQueue = (state, currentUserHandle, now) => {
 
   const unresolvedRequests = extractUnresolvedRequests(state)
 
-  const myTeams = state.team_players
-    .filter(teamPlayer => teamPlayer.player_id === me.id)
-    .map(teamPlayer =>
-      state.teams
-        .find(team => team.id === teamPlayer.team_id)
-    )
+  const myTeams = extractMyTeams(state, me)
+  const myTeamIds = myTeams.map(t => t.id)
 
-  return []
+  return state.requests.filter(request =>
+    myTeamIds.includes(request.team_id)
+  )
 }
 
 
@@ -102,17 +100,25 @@ describe.only('sorting', function(){
   })
 
 
-  // it('should work', function(){
-  //   const nicosesmaQueue = deriveQueue(state1, 'nicosesma', now)
+  it('should work', function(){
+    expect(deriveQueue(state1, 'deadlyicon', now)).to.deep.equal([])
+    expect(deriveQueue(state1, 'jrob8577', now)).to.deep.equal([])
 
-  //   expect(nicosesmaQueue).to.deep.equal([
-  //     {
-  //       "team_id": 6001,
-  //       "created_at": "2017-03-20 13:59:46.332296-07",
-  //       "resolved_at": null
-  //     }
-  //   ])
-  // })
+    expect(deriveQueue(state1, 'nicosesma', now)).to.deep.equal([
+      {
+        "team_id": 6001,
+        "created_at": "2017-03-20 13:59:46.332296-07",
+        "resolved_at": null
+      }
+    ])
+    expect(deriveQueue(state1, 'ameliavoncat', now)).to.deep.equal([
+      {
+        "team_id": 6002,
+        "created_at": "2017-03-20 13:59:46.332296-07",
+        "resolved_at": null
+      }
+    ])
+  })
 })
 
 
