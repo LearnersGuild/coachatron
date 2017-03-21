@@ -26,6 +26,52 @@ server.get('/', (req, res) => {
   `)
 })
 
+server.get('/idm-api-test', (req, res, next) => {
+  const query = `
+    query ($id: ID!) {
+      getUserById(id: $id) {
+        id
+        email
+      }
+    }
+  `
+  req.queryIdm(query, {id: req.user.id})
+    .then(results => {
+      res.json(results)
+    })
+    .catch(error => {
+      res.status(500).json({
+        error: error.message,
+        stack: error.stack,
+      })
+    })
+})
+
+server.get('/projects', (req, res, next) => {
+  const query = `
+    query {
+      findProjects {
+        id
+        name
+        artifactURL
+        cycle {
+          cycleNumber
+        }
+      }
+    }
+  `
+  req.queryGame(query, {})
+    .then(results => {
+      res.json(results)
+    })
+    .catch(error => {
+      res.status(500).json({
+        error: error.message,
+        stack: error.stack,
+      })
+    })
+})
+
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
 })
