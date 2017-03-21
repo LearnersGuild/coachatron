@@ -105,6 +105,11 @@
     },
     {
       "team_id": 6001,
+      "created_at": "2017-03-20 10:59:46.332296-07",
+      "resolved_at": null
+    },
+    {
+      "team_id": 6001,
       "created_at": "2017-03-20 13:59:46.332296-07",
       "resolved_at": null
     },
