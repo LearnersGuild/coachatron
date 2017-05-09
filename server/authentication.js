@@ -8,6 +8,16 @@ if ( !process.env.JWT_PUBLIC_KEY ) {
 
 module.exports = server => {
   server.use(addUserToRequestFromJWT)
+
+  // redirect to login if not logged in
+  server.use((req, res, next) => {
+    if (req.user) return next()
+    const redirectTo = encodeURIComponent(`${req.protocol}://${req.get('host')}${req.originalUrl}`)
+    const loginURL = `${process.env.IDM_BASE_URL}/sign-in?redirect=${redirectTo}`
+    res.redirect(loginURL)
+    // res.send(`${redirectTo} ${loginURL}`)
+  })
+
   server.use((req, res, next) => {
     req.queryIdm = function(query, variables={}){
       return idmGraphQLFetch({query, variables}, req.cookies.lgJWT)

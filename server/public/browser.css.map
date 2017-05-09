@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./browser/index.sass"],"names":[],"mappings":"AAAA;EACE,mBAAkB;EAClB,aAAY,EAAI","file":"browser.css","sourcesContent":["html, body {\n  background: orange;\n  color: green; }\n\n\n\n\n// WEBPACK FOOTER //\n// ./browser/index.sass"],"sourceRoot":""}
