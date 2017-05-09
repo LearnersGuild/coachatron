@@ -37,6 +37,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "sass-loader": "^6.0.4",
+    "simple-react-router": "0.0.13",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1"
   },

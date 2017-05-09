@@ -1,3 +1,10 @@
 import './index.sass'
+// import './favicon.js'
+import React from 'react'
+import { render } from 'react-dom'
+import Root from './components/Root'
 
-console.log('broewser js here')
+render(
+  <Root />,
+  document.querySelector('main')
+);
