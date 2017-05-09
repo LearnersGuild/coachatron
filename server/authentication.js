@@ -15,7 +15,6 @@ module.exports = server => {
     const redirectTo = encodeURIComponent(`${req.protocol}://${req.get('host')}${req.originalUrl}`)
     const loginURL = `${process.env.IDM_BASE_URL}/sign-in?redirect=${redirectTo}`
     res.redirect(loginURL)
-    // res.send(`${redirectTo} ${loginURL}`)
   })
 
   server.use((req, res, next) => {

@@ -11,12 +11,16 @@ if (process.env.NODE_ENV === 'production') {
   server.use(https({trustProtoHeader: true}))
 }
 
-server.use(express.static(__dirname+'/public'))
 server.use(cookieParser())
-
 require('./authentication')(server)
 
-server.get('/', (req, res) => {
+server.use(express.static(__dirname+'/public'))
+
+server.get('/whoami', (req, res) => {
+  res.json(req.user)
+})
+
+server.get('*', (req, res) => {
   res.sendFile(__dirname+'/public/index.html');
   // const redirectTo = encodeURIComponent(`${req.protocol}://${req.get('host')}${req.originalUrl}`)
   // const loginURL = `${process.env.IDM_BASE_URL}/sign-in?redirect=${redirectTo}`
