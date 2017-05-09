@@ -1,4 +1,4 @@
-import './index.sass'
+import './style/index.sass'
 // import './favicon.js'
 import React from 'react'
 import { render } from 'react-dom'
