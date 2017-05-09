@@ -1,26 +1,3 @@
-const { addUserToRequestFromJWT } = require('@learnersguild/idm-jwt-auth/lib/middlewares')
-const { idmGraphQLFetch } = require('@learnersguild/idm-jwt-auth/lib/utils')
-// const Game =
-
-if ( !process.env.JWT_PUBLIC_KEY ) {
-  throw new Error(`You do not have a JWT_PUBLIC_KEY in your .env. Please add it.`)
-}
-
-module.exports = server => {
-  server.use(addUserToRequestFromJWT)
-  server.use((req, res, next) => {
-    req.queryIdm = function(query, variables={}){
-      return idmGraphQLFetch({query, variables}, req.cookies.lgJWT)
-    }
-    req.queryGame = function(query, variables={}){
-      return gameGraphQLFetch({query, variables}, req.cookies.lgJWT)
-    }
-
-    // req.game = new Game(req.queryGame)
-    next()
-  })
-}
-
 
 
 const gameGraphQLFetch = function(graphQLParams, token = null) {

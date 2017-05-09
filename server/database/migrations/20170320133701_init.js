@@ -1,6 +1,10 @@
 exports.up = (knex, Promise) =>
   Promise.all([
 
+    // all the teams for a specific cycle
+    // all the projects for those teams
+    // all the players for those projects
+
     knex.schema.createTable('players', table => {
       table.string('handle').notNullable()
       table.boolean('coach').notNullable()

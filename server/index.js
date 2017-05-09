@@ -35,7 +35,7 @@ server.get('/idm-api-test', (req, res, next) => {
       }
     }
   `
-  req.queryIdm(query, {id: req.user.id})
+  req.queryIdm(query, {id: req.utser.id})
     .then(results => {
       res.json(results)
     })
@@ -47,7 +47,7 @@ server.get('/idm-api-test', (req, res, next) => {
     })
 })
 
-server.get('/projects', (req, res, next) => {
+server.get('/cycledata', (req, res, next) => {
   const query = `
     query {
       findProjects {
